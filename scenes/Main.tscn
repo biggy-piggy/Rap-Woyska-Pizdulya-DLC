@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_manager"]
+[ext_resource type="Script" path="res://scripts/arena.gd" id="2_arena"]
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="3_player"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_manager")
+
+[node name="Arena" type="Node2D" parent="."]
+script = ExtResource("2_arena")
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="PlayerOne" parent="Players" instance=ExtResource("3_player")]
+position = Vector2(360, 548)
+fighter_name = "Dolboyob Red"
+body_color = Color(0.941176, 0.364706, 0.368627, 1)
+
+[node name="PlayerTwo" parent="Players" instance=ExtResource("3_player")]
+position = Vector2(920, 548)
+player_index = 2
+fighter_name = "Dolboyob Blue"
+body_color = Color(0.286275, 0.623529, 0.956863, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 18.0
+offset_right = 488.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.941176, 0.956863, 0.980392, 1)
+theme_override_font_sizes/font_size = 26
+text = "Rap Woyska (Pizdulya DLC)"
+
+[node name="ChooseLabel" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 56.0
+offset_right = 360.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0.933333, 0.796078, 0.407843, 1)
+theme_override_font_sizes/font_size = 18
+text = "Choose your dolboyob"
+
+[node name="P1Health" type="ProgressBar" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 100.0
+offset_right = 392.0
+offset_bottom = 126.0
+value = 100.0
+show_percentage = false
+
+[node name="P2Health" type="ProgressBar" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 100.0
+offset_right = 1248.0
+offset_bottom = 126.0
+value = 100.0
+show_percentage = false
+
+[node name="P1Controls" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 132.0
+offset_right = 440.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.839216, 0.878431, 0.929412, 1)
+text = "P1: A/D move, W jump, F slap, G ult"
+
+[node name="P2Controls" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 132.0
+offset_right = 1248.0
+offset_bottom = 158.0
+theme_override_colors/font_color = Color(0.839216, 0.878431, 0.929412, 1)
+horizontal_alignment = 2
+text = "P2: arrows move, J slap, K ult"
+
+[node name="StatusLabel" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 636.0
+offset_right = 898.0
+offset_bottom = 668.0
+theme_override_colors/font_color = Color(0.933333, 0.796078, 0.407843, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+text = "Friendship ended. Hitbox started."
+
+[node name="PromptLabel" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 672.0
+offset_right = 824.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0.941176, 0.956863, 0.980392, 1)
+horizontal_alignment = 1
+text = "Press F to receive pizdulya"
